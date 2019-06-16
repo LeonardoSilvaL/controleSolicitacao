@@ -1,0 +1,21 @@
+<h1>Lista de solicitações</h1>
+<div class="col-md-8">
+  <table class="table table-hover table-fixed">
+    <thead>
+      <tr>
+        <th>Nome do Solicitante</th>
+        <th>Descrição do Item</th>
+        <th>Valor do Item</th>
+        <th>Situação</th>    
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of pedidos">
+        <td>{{p.nomeSolicitante}}</td>
+        <td>{{p.descricaoItem}}</td>
+        <td>{{p.valorItem}}</td>
+        <td>{{p.aprovado}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

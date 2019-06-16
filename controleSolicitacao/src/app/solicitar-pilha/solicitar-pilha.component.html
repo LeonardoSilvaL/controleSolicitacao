@@ -1,0 +1,27 @@
+<div class="col-md-12">
+  <form [formGroup]="pedidoForm" (ngSubmit)="onSubmit()">
+    <div class="col-md-6" id="solicitar">
+      <div class="form-group md-form validate">
+        <h2 class="text-center">Solicitar compra</h2>
+        <label>Nome do Solicitante: </label>
+        <input id="nomeSolicitante" name="nomeSolicitante" class="form-control" formControlName="nomeSolicitante">
+
+        <br/>
+
+        <label for="descricaoItem">Descrição do Item</label>
+        <textarea class="form-control" id="descricaoItem" rows="5"></textarea>
+
+        <br/>
+
+        <label for="valorItem">Valor do Item</label>
+        <input id="valorItem" name="valorItem" class="form-control" formControlName="valorItem">
+        <br/>
+
+
+
+        <button mat-button class="btn btn-primary" (click)="onSubmit()" id="save"><i class="material-icons">add_shopping_cart</i></button>
+        <button mat-button class="btn btn-primary" (click)="onSubmit()" id="cancel"><i class="material-icons">cancel_presentation</i></button>
+      </div>
+    </div> 
+  </form>
+</div>
