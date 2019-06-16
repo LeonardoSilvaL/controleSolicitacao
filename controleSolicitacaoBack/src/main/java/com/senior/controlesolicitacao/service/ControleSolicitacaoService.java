@@ -22,6 +22,8 @@ public interface ControleSolicitacaoService {
     //Lista um pedido pelo identificador dele
     public Optional<Pedido> listarPedidoPorId(Integer id);
     
+    public Pedido aprovar(Pedido pedido);
+    
     
 	
 	

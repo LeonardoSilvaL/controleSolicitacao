@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Pedido } from '../model/pedido';
 
 @Injectable({
@@ -7,13 +7,21 @@ import { Pedido } from '../model/pedido';
 })
 export class VisualarSolicitacoesService {
 
-  urlListarTodos = "";
+  urlListarTodos = "http://localhost:8080/pedido/listarPedidos";
   urlListarPorId = "";
 
   constructor(private http: HttpClient) { }
 
   listar() {
-    return this.http.get<Pedido[]>(`${this.urlListarTodos}`)
+    const headers = new HttpHeaders();
+
+    headers.set("Access-Control-Allow-Origin", "*");
+    headers.set("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS, DELETE, PATCH");
+    headers.set("Access-Control-Max-Age", "3600");
+    headers.set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    headers.set("Access-Control-Expose-Headers", "Location");
+    
+    return this.http.get<Pedido[]>(`${this.urlListarTodos}`, {headers: headers});
   } 
 
   listarPorId(pedido: Pedido) {

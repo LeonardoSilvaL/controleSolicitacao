@@ -20,6 +20,7 @@ public class Pedido {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	private String nomeSolicitante;
 	private String descricaoItem;
 	private String valorItem;

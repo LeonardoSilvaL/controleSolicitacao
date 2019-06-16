@@ -17,6 +17,12 @@ export class VisualzarSolicitacoesComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private visualizarSolicitacoes: VisualarSolicitacoesService) { }
 
   ngOnInit() {
+    this.listar();
+  }
+
+  listar(){
+    this.visualizarSolicitacoes.listar()
+      .subscribe(dados => this.pedidos = dados);
   }
 
 }

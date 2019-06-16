@@ -26,12 +26,12 @@ export class SolicitarPilhaComponent implements OnInit {
     });
   }
 
-  solicitarItem(){
+  solicitarItem(){    
     return this.solicitacaoPilhasService.solicitarPilha(this.pedido);
   }
 
   onSubmit(){
-    this.pedido = this.pedidoForm.Value;
+    this.pedido = this.pedidoForm.value;
     this.solicitarItem().
       subscribe(dados => {
         this.pedido = dados

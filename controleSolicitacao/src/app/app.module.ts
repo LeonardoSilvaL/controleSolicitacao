@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 import { VisualzarSolicitacoesComponent } from './visualzar-solicitacoes/visualzar-solicitacoes.component';
+import { VisualarSolicitacoesService } from './visualzar-solicitacoes/visualar-solicitacoes.service';
 
 const appRoutes: Routes = [
   { path: 'solicitar-pilha', component: SolicitarPilhaComponent },
@@ -30,7 +31,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [SolicitarPilhaService],
+  providers: [SolicitarPilhaService, VisualarSolicitacoesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

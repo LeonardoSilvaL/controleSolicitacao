@@ -35,4 +35,10 @@ public class ControleSolicitacaoServiceImpl implements ControleSolicitacaoServic
 		return dao.findById(id);
 	}
 
+	@Override
+	public Pedido aprovar(Pedido pedido) {
+		return dao.save(pedido);
+		
+	}
+
 }
