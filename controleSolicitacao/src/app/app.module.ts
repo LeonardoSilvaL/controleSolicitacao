@@ -10,10 +10,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 import { VisualzarSolicitacoesComponent } from './visualzar-solicitacoes/visualzar-solicitacoes.component';
 import { VisualarSolicitacoesService } from './visualzar-solicitacoes/visualar-solicitacoes.service';
+import { AceitarSolicitacaoComponent } from './aceitar-solicitacao/aceitar-solicitacao.component';
+import { AceitarSolicitacaoService } from './aceitar-solicitacao/aceitar-solicitacao.service';
 
 const appRoutes: Routes = [
   { path: 'solicitar-pilha', component: SolicitarPilhaComponent },
-  { path: 'visualizar-pedidos', component: VisualzarSolicitacoesComponent}
+  { path: 'visualizar-pedidos', component: VisualzarSolicitacoesComponent},
+  { path: 'aceitar-solicitacao', component: AceitarSolicitacaoComponent}
 ];
 
 
@@ -21,7 +24,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     SolicitarPilhaComponent,
-    VisualzarSolicitacoesComponent
+    VisualzarSolicitacoesComponent,
+    AceitarSolicitacaoComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes, { enableTracing : true}),
@@ -31,7 +35,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [SolicitarPilhaService, VisualarSolicitacoesService],
+  providers: [SolicitarPilhaService, VisualarSolicitacoesService, AceitarSolicitacaoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

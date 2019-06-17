@@ -24,6 +24,8 @@ public interface ControleSolicitacaoService {
     
     public Pedido aprovar(Pedido pedido);
     
+    public List<Pedido> buscarPorNaoAprovado();
+    
     
 	
 	

@@ -41,4 +41,9 @@ public class ControleSolicitacaoServiceImpl implements ControleSolicitacaoServic
 		
 	}
 
+	@Override
+	public List<Pedido> buscarPorNaoAprovado() {
+		return dao.findByAprovado();
+	}
+
 }

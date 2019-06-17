@@ -55,6 +55,13 @@ public class PedidoController {
 	  return service.aprovar(pedido);
 	}
 	
+	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, value= "/pedido/buscarPorNaoAprovados")
+	public List<Pedido> buscarPorNaoAprovados() {
+		System.out.println(geraNomeClasseParaLog() + " - Salvando pedido");
+		return service.buscarPorNaoAprovado();
+	}
+
+	
 	private String geraNomeClasseParaLog() {
 		return this.getClass().getSimpleName();
 	}
