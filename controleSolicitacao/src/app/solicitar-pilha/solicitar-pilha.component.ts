@@ -31,7 +31,7 @@ export class SolicitarPilhaComponent implements OnInit {
   }
 
   onSubmit(){
-    if (this.pedidoForm.value.nomeSolicitante  = '') {
+    if (!this.pedidoForm.value.nomeSolicitante) {
       return;
     }
 

@@ -29,6 +29,8 @@ export class AceitarSolicitacaoComponent implements OnInit {
     this.pedido.aprovado = 1;
     this.aceitarSolicitacaoService.aprovar(this.pedido)
     .subscribe(dados => this.pedido = dados);
+
+    this.listar();
   }
 
   onReprovar(id: number) {
@@ -36,6 +38,8 @@ export class AceitarSolicitacaoComponent implements OnInit {
     this.pedido.aprovado = 0;
     this.aceitarSolicitacaoService.aprovar(this.pedido)
       .subscribe(dados => this.pedido = dados);
+
+    this.listar();
   }
 
   getPedido(id: number): Pedido {
