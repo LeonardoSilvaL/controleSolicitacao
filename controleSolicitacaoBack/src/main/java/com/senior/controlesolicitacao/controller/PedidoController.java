@@ -4,8 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,44 +22,42 @@ import com.senior.controlesolicitacao.model.Pedido;
 import com.senior.controlesolicitacao.service.ControleSolicitacaoService;
 
 @RestController
-@CrossOrigin(allowCredentials = "false", origins = "*", allowedHeaders="header1,header2",exposedHeaders="header1")
+@RequestMapping("/pedido")
 public class PedidoController {
 	
 	@Autowired
 	ControleSolicitacaoService service;
 	
-	@RequestMapping(value= "/pedido/listarPedidos", method= RequestMethod.GET)
+	@CrossOrigin
+	@RequestMapping(value="/listarPedidos", method=RequestMethod.GET)
 	public List<Pedido> listarPedidos(){
 		System.out.println(geraNomeClasseParaLog() + " - Listando pedidos");
-		List<Pedido> pedidos =  service.listarPedidos();
-		
-		for (Pedido pedido : pedidos) {
-			System.out.println(pedido.getId());
-		}
-		
-		return pedidos;
+		return service.listarPedidos();
 	}
 	
-	@CrossOrigin(exposedHeaders="testheader")
-	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, value= "/pedido/salvar")
-	public Pedido salvarPedido(Pedido pedido) {
+	@CrossOrigin
+	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, value= "/salvar")
+	public Pedido salvarPedido(@RequestBody Pedido pedido) {
 		System.out.println(geraNomeClasseParaLog() + " - Salvando pedido");
 		return service.salvar(pedido);
 	}
 	
-	@RequestMapping(value= "/pedido/listarPorId/{id}")
-	public Optional<Pedido> listarPedidoPorId(@PathVariable Integer id) {
+	@CrossOrigin
+	@GetMapping("/listarPorId/{id}")
+	public Optional<Pedido> listarPedidoPorId(@PathVariable("id") Integer id) {
 		System.out.println(geraNomeClasseParaLog() + " Listando pedido " + id);
 		return service.listarPedidoPorId(id);
 	}
 	
-	@RequestMapping(value = "pedido/aprovar")
+	@CrossOrigin
+	@PostMapping("/aprovar")
 	public Pedido aprovar(@RequestBody Pedido pedido) {
 	  System.out.println(geraNomeClasseParaLog() + " Aprovando solicitação " + pedido.getId());
 	  return service.aprovar(pedido);
 	}
 	
-	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, value= "/pedido/buscarPorNaoAprovados")
+	@CrossOrigin
+	@RequestMapping(value="/buscarPorNaoAprovados", method=RequestMethod.GET)
 	public List<Pedido> buscarPorNaoAprovados() {
 		System.out.println(geraNomeClasseParaLog() + " - Salvando pedido");
 		return service.buscarPorNaoAprovado();

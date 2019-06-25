@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Pedido } from '../model/pedido';
-import {FormBuilder, Validators} from '@angular/forms';
+import {FormBuilder, Validators, FormGroup} from '@angular/forms';
 import { SolicitarPilhaService } from './solicitar-pilha.service';
 
 @Component({
@@ -19,9 +19,9 @@ export class SolicitarPilhaComponent implements OnInit {
   ngOnInit() {
     this.pedidoForm = this.formBuilder.group({
       Id: [-1],
-      nomeSolicitante: ['', Validators.required],
-      descricaoItem: ['', Validators.required],
-      valorItem: ['', Validators.required],
+      nomeSolicitante: ['',[Validators.required]],
+      descricaoItem: ['',[Validators.required]],
+      valorItem: ['', [Validators.required]],
       aprovado: [-1]
     });
   }
@@ -31,12 +31,27 @@ export class SolicitarPilhaComponent implements OnInit {
   }
 
   onSubmit(){
+    if (this.pedidoForm.value.nomeSolicitante  = '') {
+      return;
+    }
+
     this.pedido = this.pedidoForm.value;
     this.solicitarItem().
       subscribe(dados => {
         this.pedido = dados
         this.showMsg = true;
+      },
+      error => {
+        this.showMsg = false;
       });
+
+    this.pedidoForm.reset({
+      id: -1,
+      nomeSolicitante: '',
+      descricaoItem: '',
+      valorItem: '',
+      aprovado: -1
+    });
   }
 
 }

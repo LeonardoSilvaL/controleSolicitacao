@@ -12,13 +12,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let p of pedidos">
+      <tr *ngFor="let p of pedidos || async" [attr.id]="p.id">
         <td>{{p.nomeSolicitante}}</td>
         <td>{{p.descricaoItem}}</td>
         <td>{{p.valorItem}}</td>
         <td>{{p.aprovado}}</td>
-        <td><button mat-button class="btn btn-primary" (click)="onAprovar()"><i class="material-icons">check_circle_outline</i></button></td>
-        <td><button mat-button class="btn btn-primary" (click)="onReprovar()"><i class="fas fa-trash-alt"></i></button></td>        
+        <td><button mat-button class="btn btn-primary" (click)="onAprovar(p.id)"><i class="material-icons">check_circle_outline</i></button></td>
+        <td><button mat-button class="btn btn-primary" (click)="onReprovar(p.id)"><i class="material-icons">cancel</i></button></td>
       </tr>
     </tbody>
   </table>

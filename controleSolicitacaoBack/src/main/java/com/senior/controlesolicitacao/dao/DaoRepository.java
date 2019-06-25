@@ -9,7 +9,6 @@ import com.senior.controlesolicitacao.model.Pedido;
 
 public interface DaoRepository extends JpaRepository<Pedido, Integer>{
 	
-	@Query("SELECT * FROM PEDIDO WHERE APROVADO = 0")
+	@Query("SELECT p FROM Pedido p WHERE p.aprovado = -1")
 	public List<Pedido> findByAprovado();
-
 }

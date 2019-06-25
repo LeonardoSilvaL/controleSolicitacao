@@ -24,16 +24,28 @@ export class AceitarSolicitacaoComponent implements OnInit {
     .subscribe(dados => this.pedidos = dados);
   }
 
-  onAprovar(u: any) {
-      this.pedido = u;  
-      this.pedido.aprovado = 1;
-      this.aceitarSolicitacaoService.aprovar(this.pedido);
+  onAprovar(id: number) {
+    this.pedido = this.getPedido(id);
+    this.pedido.aprovado = 1;
+    this.aceitarSolicitacaoService.aprovar(this.pedido)
+    .subscribe(dados => this.pedido = dados);
   }
 
-  onReprovar(u: any) {
-    this.pedido = u;  
+  onReprovar(id: number) {
+    this.pedido = this.getPedido(id);
     this.pedido.aprovado = 0;
-    this.aceitarSolicitacaoService.aprovar(this.pedido);
-}
+    this.aceitarSolicitacaoService.aprovar(this.pedido)
+      .subscribe(dados => this.pedido = dados);
+  }
+
+  getPedido(id: number): Pedido {
+    for(let i = 0; i < this.pedidos.length; ++i){
+      if (this.pedidos[i].id == id) {
+        return this.pedidos[i];
+      }
+    }
+
+  }
+
 
 }
