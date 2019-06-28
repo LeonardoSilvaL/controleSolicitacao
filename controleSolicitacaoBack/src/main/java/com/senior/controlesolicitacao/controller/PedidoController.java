@@ -3,6 +3,8 @@ package com.senior.controlesolicitacao.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -61,6 +63,13 @@ public class PedidoController {
 	public List<Pedido> buscarPorNaoAprovados() {
 		System.out.println(geraNomeClasseParaLog() + " - Salvando pedido");
 		return service.buscarPorNaoAprovado();
+	}
+	
+	@CrossOrigin
+	@RequestMapping(value="/deletarSolicitacao/{id}", method=RequestMethod.DELETE)
+	public void deletarPedido(@PathParam("id") Integer id) {
+		System.out.println(geraNomeClasseParaLog() + " - Deletando pedido " + id);
+		service.deletarPedido(id);
 	}
 
 	

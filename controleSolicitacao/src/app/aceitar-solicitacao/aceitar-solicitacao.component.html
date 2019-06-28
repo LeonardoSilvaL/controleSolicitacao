@@ -1,25 +1,27 @@
 <h1>Lista de solicitações</h1>
-<div class="col-md-8">
-  <table class="table table-hover table-fixed">
-    <thead>
-      <tr>
-        <th>Nome do Solicitante</th>
-        <th>Descrição do Item</th>
-        <th>Valor do Item</th>
-        <th>Situação</th>    
-        <th>Aceitar</th>
-        <th>Recusar</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let p of pedidos || async" [attr.id]="p.id">
-        <td>{{p.nomeSolicitante}}</td>
-        <td>{{p.descricaoItem}}</td>
-        <td>{{p.valorItem}}</td>
-        <td>{{p.aprovado}}</td>
-        <td><button mat-button class="btn btn-primary" (click)="onAprovar(p.id)"><i class="material-icons">check_circle_outline</i></button></td>
-        <td><button mat-button class="btn btn-primary" (click)="onReprovar(p.id)"><i class="material-icons">cancel</i></button></td>
-      </tr>
-    </tbody>
-  </table>
+<div class="row">
+  <div class="col-lg-12 table-responsive">
+      <table class="table table-bordered table-responsive-md table-striped text-center">
+        <thead>
+          <tr>
+            <th>Nome do Solicitante</th>
+            <th>Descrição do Item</th>
+            <th>Valor do Item</th>
+            <th>Situação</th>    
+            <th>Aceitar</th>
+            <th>Recusar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of pedidos || async" [attr.id]="p.id">
+            <td>{{p.nomeSolicitante}}</td>
+            <td>{{p.descricaoItem}}</td>
+            <td>{{p.valorItem}}</td>
+            <td>{{p.aprovado}}</td>
+            <td><button mat-button class="btn btn-success btn-rounded btn-sm my-0" (click)="onAprovar(p.id)"><i class="material-icons">check_circle_outline</i></button></td>
+            <td><button mat-button class="btn btn-danger btn-rounded btn-sm my-0" (click)="onReprovar(p.id)"><i class="material-icons">cancel</i></button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 </div>

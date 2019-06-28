@@ -45,5 +45,10 @@ public class ControleSolicitacaoServiceImpl implements ControleSolicitacaoServic
 	public List<Pedido> buscarPorNaoAprovado() {
 		return dao.findByAprovado();
 	}
+	
+	@Override
+	public void deletarPedido(Integer id) {
+		dao.deleteById(id);
+	}
 
 }

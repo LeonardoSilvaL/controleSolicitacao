@@ -7,10 +7,11 @@ const httpOptions = {
 }
 
 export class Config {
-    static listarTodosUrl       = baseUrl + "/listarPedidos";
-    static listarNaoAprovadoUrl = baseUrl + "/buscarPorNaoAprovados";
-    static aprovar              = baseUrl + "/aprovar";
-    static SolicitarItem        = baseUrl + "/salvar";
+    static listarTodosUrl       = baseUrl + '/listarPedidos';
+    static listarNaoAprovadoUrl = baseUrl + '/buscarPorNaoAprovados';
+    static aprovar              = baseUrl + '/aprovar';
+    static SolicitarItem        = baseUrl + '/salvar';
+    static deletarPedido        = baseUrl + '/deletarSolicitacao/';
 
     static getOptions() {
         return httpOptions;

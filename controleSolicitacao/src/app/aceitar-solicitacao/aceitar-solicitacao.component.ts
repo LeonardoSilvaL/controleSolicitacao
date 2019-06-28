@@ -28,9 +28,10 @@ export class AceitarSolicitacaoComponent implements OnInit {
     this.pedido = this.getPedido(id);
     this.pedido.aprovado = 1;
     this.aceitarSolicitacaoService.aprovar(this.pedido)
-    .subscribe(dados => this.pedido = dados);
-
-    this.listar();
+    .subscribe(dados => {
+      this.pedido = dados;
+      this.listar();
+    });
   }
 
   onReprovar(id: number) {
@@ -43,8 +44,9 @@ export class AceitarSolicitacaoComponent implements OnInit {
   }
 
   getPedido(id: number): Pedido {
-    for(let i = 0; i < this.pedidos.length; ++i){
-      if (this.pedidos[i].id == id) {
+// tslint:disable-next-line: prefer-for-of
+    for (let i = 0; i < this.pedidos.length; ++i) {
+      if (this.pedidos[i].id === id) {
         return this.pedidos[i];
       }
     }

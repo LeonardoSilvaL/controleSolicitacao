@@ -11,26 +11,26 @@ import { SolicitarPilhaService } from './solicitar-pilha.service';
 export class SolicitarPilhaComponent implements OnInit {
 
   pedido: Pedido;
-  pedidoForm: any;
-  showMsg: boolean = false;
+  pedidoForm: FormGroup;
+  showMsg = false;
 
   constructor(private formBuilder: FormBuilder, private solicitacaoPilhasService: SolicitarPilhaService) { }
 
   ngOnInit() {
     this.pedidoForm = this.formBuilder.group({
       Id: [-1],
-      nomeSolicitante: ['',[Validators.required]],
-      descricaoItem: ['',[Validators.required]],
-      valorItem: ['', [Validators.required]],
+      nomeSolicitante: ['', Validators.required],
+      descricaoItem: ['', Validators.required],
+      valorItem: ['', Validators.required],
       aprovado: [-1]
     });
   }
 
-  solicitarItem(){    
+  solicitarItem() {
     return this.solicitacaoPilhasService.solicitarPilha(this.pedido);
   }
 
-  onSubmit(){
+  onSubmit() {
     if (!this.pedidoForm.value.nomeSolicitante) {
       return;
     }
@@ -38,7 +38,7 @@ export class SolicitarPilhaComponent implements OnInit {
     this.pedido = this.pedidoForm.value;
     this.solicitarItem().
       subscribe(dados => {
-        this.pedido = dados
+        this.pedido = dados;
         this.showMsg = true;
       },
       error => {

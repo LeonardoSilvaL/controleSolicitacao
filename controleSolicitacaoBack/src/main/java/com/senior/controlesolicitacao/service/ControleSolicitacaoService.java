@@ -26,7 +26,6 @@ public interface ControleSolicitacaoService {
     
     public List<Pedido> buscarPorNaoAprovado();
     
-    
-	
+    public void deletarPedido(Integer id);
 	
 }

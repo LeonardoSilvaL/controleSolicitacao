@@ -11,18 +11,46 @@ import { VisualarSolicitacoesService } from './visualar-solicitacoes.service';
 export class VisualzarSolicitacoesComponent implements OnInit {
 
   pedidos: Array<Pedido>;
-  pedido : Pedido;
-  pedidoForm: any;
+  pedido: Pedido;
+  showModal = false;
 
-  constructor(private formBuilder: FormBuilder, private visualizarSolicitacoes: VisualarSolicitacoesService) { }
+  constructor(private visualizarSolicitacoes: VisualarSolicitacoesService) { }
 
   ngOnInit() {
     this.listar();
   }
 
-  listar(){
+  listar() {
     this.visualizarSolicitacoes.listar()
       .subscribe(dados => this.pedidos = dados);
+  }
+
+  onClick(id: number) {
+    this.showModal = true;
+    this.pedido = this.getPedido(id);
+  }
+
+  getPedido(id: number): Pedido {
+    for (let i = 0; i < this.pedidos.length; ++i) {
+      if (this.pedidos[i].id === id) {
+        return this.pedidos[i];
+      }
+    }
+  }
+
+  hide() {
+    this.showModal = false;
+  }
+
+  deletar(id: string) {
+    return this.visualizarSolicitacoes.deletar(id);
+  }
+
+  onDelete(id: string) {
+    this.deletar(id)
+      .subscribe(dados => {
+        this.listar();
+      });
   }
 
 }
