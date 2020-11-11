@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.senior.controlesolicitacao.model.Pedido;
+import com.senior.controlesolicitacao.model.Solicitante;
 
 @Service
 public interface ControleSolicitacaoService {
@@ -27,5 +28,13 @@ public interface ControleSolicitacaoService {
     public List<Pedido> buscarPorNaoAprovado();
     
     public void deletarPedido(Integer id);
+    
+    public Solicitante salvarSolicitante(Solicitante solicitante);
+    
+    public List<Solicitante> listarSolicitantesPorNome(String nomeSolicitante);
+    
+    public void deletarSolicitante(Integer Id);
+    
+    public List<Solicitante> listarSolicitantes();
 	
 }

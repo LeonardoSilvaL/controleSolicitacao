@@ -1,0 +1,51 @@
+<h2 class="text-center" id="titulo">Solicitantes</h2>
+<div class="col-md-12" id="form">
+  <form [formGroup]="solicitanteForm" (ngSubmit)="onSubmit()">
+    <div class="col-md-6" id="solicitar">
+      <div class="form-group">
+
+        <div class="row">
+          <div class="col-sm-6">
+            <label id="lblNomeSolicitante">Nome do Solicitante </label>
+            <input id="nomeSolicitante" name="nomeSolicitante" class="form-control" formControlName="nomeSolicitante">
+          </div>
+
+          <div class="col-sm-6">
+            <label for="dataNasc" id="lblDataNasc">Data de Nascimento </label>
+            <input id="dataNasc" name="dataNasc" class="form-control" formControlName="dataNasc" type="date">
+          </div>
+        </div>        
+        
+        <div class="row" id="botoes">
+          <div class="col-md-12">
+            <button mat-button class="btn btn-primary" (click)="onSubmit()" id="save"><i class="material-icons">save</i></button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12 table-responsive">
+              <table class="table table-hover table-fixed">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Nome do Solicitante</th>
+                    <th>Data de Nascimento</th>
+                    <th>Editar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let s of solicitantes" data-toggle="modal">
+                    <td>{{s.id}}</td>
+                    <td>{{s.nomeSolicitante}}</td>
+                    <td>{{s.dataNasc}}</td>
+                    <td><button mat-button class="btn btn-primary btn-rounded btn-sm my-0" (click)="onEdit(s.id)"><i class="material-icons">edit</i></button></td>
+                    <td><button mat-button class="btn btn-primary btn-rounded btn-sm my-0" (click)="onDelete(s)"><i class="material-icons">delete</i></button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>  
+          </div>                           
+      </div>
+    </div>
+  </form>
+</div>

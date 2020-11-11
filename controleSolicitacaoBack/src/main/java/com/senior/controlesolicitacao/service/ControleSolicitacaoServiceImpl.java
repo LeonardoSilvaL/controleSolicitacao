@@ -7,13 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.senior.controlesolicitacao.dao.DaoRepository;
+import com.senior.controlesolicitacao.dao.SolicitanteDaoRepository;
 import com.senior.controlesolicitacao.model.Pedido;
+import com.senior.controlesolicitacao.model.Solicitante;
 
 @Service
 public class ControleSolicitacaoServiceImpl implements ControleSolicitacaoService{
 	
 	@Autowired
 	DaoRepository dao;
+	
+	@Autowired
+	SolicitanteDaoRepository daoSolicitante;
 
 	@Override
 	public List<Pedido> listarPedidosNaoAprovados() {
@@ -49,6 +54,27 @@ public class ControleSolicitacaoServiceImpl implements ControleSolicitacaoServic
 	@Override
 	public void deletarPedido(Integer id) {
 		dao.deleteById(id);
+	}
+
+	@Override
+	public Solicitante salvarSolicitante(Solicitante solicitante) {		
+		return daoSolicitante.save(solicitante);
+	}
+
+	@Override
+	public List<Solicitante> listarSolicitantesPorNome(String nomeSolicitante) {		
+		return null;
+	}
+
+	@Override
+	public void deletarSolicitante(Integer Id) {
+		daoSolicitante.deleteById(Id);
+		
+	}
+
+	@Override
+	public List<Solicitante> listarSolicitantes() {
+		return daoSolicitante.findAll();
 	}
 
 }

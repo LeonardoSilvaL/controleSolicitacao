@@ -1,5 +1,6 @@
+import { CadastroSolicitanteService } from './cadastro-solicitante/cadastro-solicitante.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,11 +13,13 @@ import { VisualzarSolicitacoesComponent } from './visualzar-solicitacoes/visualz
 import { VisualarSolicitacoesService } from './visualzar-solicitacoes/visualar-solicitacoes.service';
 import { AceitarSolicitacaoComponent } from './aceitar-solicitacao/aceitar-solicitacao.component';
 import { AceitarSolicitacaoService } from './aceitar-solicitacao/aceitar-solicitacao.service';
+import { CadastroSolicitanteComponent } from './cadastro-solicitante/cadastro-solicitante.component';
 
 const appRoutes: Routes = [
   { path: 'solicitar-pilha', component: SolicitarPilhaComponent },
   { path: 'visualizar-pedidos', component: VisualzarSolicitacoesComponent},
-  { path: 'aceitar-solicitacao', component: AceitarSolicitacaoComponent}
+  { path: 'aceitar-solicitacao', component: AceitarSolicitacaoComponent},
+  { path: 'cadastro-solicitante', component: CadastroSolicitanteComponent} 
 ];
 
 
@@ -25,7 +28,8 @@ const appRoutes: Routes = [
     AppComponent,
     SolicitarPilhaComponent,
     VisualzarSolicitacoesComponent,
-    AceitarSolicitacaoComponent
+    AceitarSolicitacaoComponent,
+    CadastroSolicitanteComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes, { enableTracing : true}),
@@ -35,7 +39,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [SolicitarPilhaService, VisualarSolicitacoesService, AceitarSolicitacaoService],
+  providers: [SolicitarPilhaService, VisualarSolicitacoesService, AceitarSolicitacaoService, CadastroSolicitanteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

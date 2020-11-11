@@ -1,0 +1,16 @@
+h2 {
+    margin-top: 2%;
+}
+#form {
+    margin-left: 5%;
+    margin-top: 3%;
+}
+
+#botoes{
+    margin-top: 2%;
+    margin-left: 40%;
+}
+
+#lblDataNasc, #lblNomeSolicitante{
+    margin-left: 25%;
+}
